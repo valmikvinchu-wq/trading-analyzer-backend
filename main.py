@@ -7,9 +7,12 @@ app = FastAPI()
 # ALLOW WEBSITE TO CONNECT
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=[
+        "https://markettoolhub.com",
+        "https://www.markettoolhub.com"
+    ],
+    allow_methods=["POST", "GET"],
+    allow_headers=["Content-Type"],
 )
 
 class TradingAnswers(BaseModel):
@@ -55,3 +58,4 @@ def analyze_trading(answers: TradingAnswers):
         "severity": severity,
         "suggestion": "Use fixed strategy, strict stop loss, and risk management"
     }
+
