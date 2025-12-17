@@ -5,15 +5,15 @@ from pydantic import BaseModel
 app = FastAPI()
 
 # ALLOW WEBSITE TO CONNECT
-app.add_middleware(
+pp.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://markettoolhub.com",
         "https://www.markettoolhub.com"
     ],
     allow_methods=["POST", "GET"],
-    allow_headers=["Content-Type"],
-)
+    allow_headers=["Content-Type", "X-API-Key"],
+    )
 
 class TradingAnswers(BaseModel):
     risk_management: str
@@ -58,4 +58,3 @@ def analyze_trading(answers: TradingAnswers):
         "severity": severity,
         "suggestion": "Use fixed strategy, strict stop loss, and risk management"
     }
-
